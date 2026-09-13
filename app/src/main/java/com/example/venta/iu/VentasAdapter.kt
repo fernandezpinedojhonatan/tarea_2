@@ -1,12 +1,15 @@
 package com.example.venta.iu
 
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.venta.R
 import com.example.venta.model.Venta
+import com.google.android.material.card.MaterialCardView
 
 class VentasAdapter(private var ventas: List<Venta>) :
     RecyclerView.Adapter<VentasAdapter.VentasViewHolder>() {
@@ -19,6 +22,8 @@ class VentasAdapter(private var ventas: List<Venta>) :
 
     override fun onBindViewHolder(holder: VentasViewHolder, position: Int) {
         val venta = ventas[position]
+        val contexto = holder.itemView.context
+
         holder.tvAvatar.text = venta.nombre.firstOrNull()?.uppercase() ?: "V"
         holder.tvNombre.text = venta.nombre
         holder.tvCodigo.text = "Código: ${venta.codigo}"
@@ -26,6 +31,20 @@ class VentasAdapter(private var ventas: List<Venta>) :
         holder.tvCantidad.text = "Cantidad: ${venta.cantidad}"
         holder.tvTipo.text = "Tipo: ${venta.tipo}"
         holder.tvFecha.text = "Fecha: ${venta.fechaVenta}"
+
+        // 🎨 BORDE Y TEXTO DEL TIPO SEGÚN EL COMPROBANTE
+        when (venta.tipo.lowercase()) {
+            "boleta" -> {
+                holder.cardVenta.strokeColor = ContextCompat.getColor(contexto, R.color.rojo_boleta)
+                holder.tvTipo.setTextColor(ContextCompat.getColor(contexto, R.color.rojo_boleta))
+                holder.tvTipo.setTypeface(null, Typeface.BOLD)
+            }
+            "factura" -> {
+                holder.cardVenta.strokeColor = ContextCompat.getColor(contexto, R.color.verde_factura)
+                holder.tvTipo.setTextColor(ContextCompat.getColor(contexto, R.color.verde_factura))
+                holder.tvTipo.setTypeface(null, Typeface.BOLD)
+            }
+        }
     }
 
     override fun getItemCount(): Int = ventas.size
@@ -36,6 +55,7 @@ class VentasAdapter(private var ventas: List<Venta>) :
     }
 
     class VentasViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val cardVenta: MaterialCardView = view.findViewById(R.id.cardVenta)
         val tvAvatar: TextView   = view.findViewById(R.id.tvAvatar)
         val tvNombre: TextView   = view.findViewById(R.id.tvNombre)
         val tvCodigo: TextView   = view.findViewById(R.id.tvCodigo)
