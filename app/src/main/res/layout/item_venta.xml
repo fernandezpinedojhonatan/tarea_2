@@ -14,8 +14,6 @@
     app:strokeWidth="3dp"
     app:cardBackgroundColor="@color/card_background">
 
-    <!-- ... todo lo de adentro queda igual ... -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,23 +26,15 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <FrameLayout
+            <!-- 🔥 ICONO DEL PRODUCTO -->
+            <ImageView
+                android:id="@+id/tvAvatar"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="@drawable/account_circle_24px"
-                android:layout_marginEnd="16dp">
-
-                <TextView
-                    android:id="@+id/tvAvatar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="V"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-
-            </FrameLayout>
+                android:layout_marginEnd="16dp"
+                android:padding="8dp"
+                android:src="@drawable/remove_shopping_cart_24px"
+                android:contentDescription="Icono producto" />
 
             <LinearLayout
                 android:layout_width="0dp"
