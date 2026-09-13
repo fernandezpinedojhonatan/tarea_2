@@ -65,7 +65,7 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- LISTA CON SCROLLBAR VISIBLE -->
+    <!-- LISTA CON SCROLLBAR VISIBLE AL LADO DERECHO -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewVentas"
         android:layout_width="match_parent"
@@ -74,6 +74,7 @@
         android:scrollbars="vertical"
         android:scrollbarStyle="outsideOverlay"
         android:scrollbarSize="4dp"
-        android:scrollbarThumbVertical="@android:color/darker_gray" />
+        android:scrollbarThumbVertical="@android:color/darker_gray"
+        android:fadeScrollbars="false" />
 
 </LinearLayout>
