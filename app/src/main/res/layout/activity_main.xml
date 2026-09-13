@@ -65,10 +65,15 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- LISTA CON SCROLLBAR VISIBLE -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewVentas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"/>
+        android:padding="8dp"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbarSize="4dp"
+        android:scrollbarThumbVertical="@android:color/darker_gray" />
 
 </LinearLayout>
